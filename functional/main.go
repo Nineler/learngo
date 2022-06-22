@@ -1,6 +1,7 @@
 package main
 
 import (
+	"GOProject/functional/fib"
 	"bufio"
 	"fmt"
 	"io"
@@ -18,15 +19,6 @@ func (g intGen) Read(p []byte) (n int, err error) {
 	return strings.NewReader(s).Read(p)
 }
 
-//生成斐波那契数列(前两项为1，之后每项为前两项之和)
-func fibonacci() intGen {
-	a, b := 0, 1
-	return func() int {
-		a, b = b, a+b
-		return a
-	}
-}
-
 func printFileContents(reader io.Reader) {
 	scanner := bufio.NewScanner(reader)
 	for scanner.Scan() {
@@ -35,6 +27,6 @@ func printFileContents(reader io.Reader) {
 }
 
 func main() {
-	f := fibonacci()
+	var f intGen = fib.Fibonacci()
 	printFileContents(f)
 }
