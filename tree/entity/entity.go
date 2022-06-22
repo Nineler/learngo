@@ -1,6 +1,9 @@
 package main
 
-import "GOProject/tree"
+import (
+	"GOProject/tree"
+	"fmt"
+)
 
 func main() {
 	var root tree.Node
@@ -12,4 +15,9 @@ func main() {
 	root.Right.Left.SetValue(4)
 
 	root.Traverse()
+	nodecontent := 0
+	root.TraverseFunc(func(node *tree.Node) {
+		nodecontent++
+	})
+	fmt.Println(nodecontent)
 }

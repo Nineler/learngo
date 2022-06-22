@@ -11,15 +11,6 @@ func (node Node) Print() {
 	fmt.Print(node.Value)
 }
 
-func (node *Node) Traverse() {
-	if node == nil {
-		return
-	}
-	node.Print()
-	node.Left.Traverse()
-	node.Right.Traverse()
-}
-
 func CreateNode(value int) *Node {
 	return &Node{Value: value}
 }
