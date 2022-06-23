@@ -17,3 +17,14 @@ func TestSubstr(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkSubstr(b *testing.B) {
+	s := "asddsadkaksk"
+	ans := 4
+	for i := 0; i < b.N; i++ {
+		asdjk := lengthOfNunRepeatingSubStr(s)
+		if asdjk != ans {
+			b.Errorf("lengthOfNunRepeatingSubStr(%s)"+"got %d;expected %d", s, asdjk, ans)
+		}
+	}
+}
