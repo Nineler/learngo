@@ -45,8 +45,12 @@ func euler() {
 //强制转换
 func Triangle() {
 	a, b := 3, 4
+	fmt.Println(tryTriangle(a, b))
+}
+func tryTriangle(a, b int) int {
 	var c int = int(math.Sqrt(float64(a*a + b*b)))
 	fmt.Println(c)
+	return c
 }
 
 //常量
