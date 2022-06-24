@@ -52,7 +52,49 @@ func unMarshal() {
 	fmt.Printf("%+v\n", o)
 }
 
+func parseNLP() {
+	res := `{
+"data":	[
+	{
+		"synonym":"",
+		"weight":"0.100000",
+		"tag":"普通词",
+		"word":"请"
+	},
+	{
+		"synonym":"",
+		"weight":"0.100000",
+		"tag":"普通词",
+		"word":"输入"
+	},
+	{
+		"synonym":"",
+		"weight":"1.000000",
+		"tag":"品类",
+		"word":"文本"
+	}
+]
+}`
+	//m := make(map[string]interface{})     使用map接收值
+	//使用结构体接收，相对简单
+	m := struct {
+		Data []struct {
+			Synonym string `json:"synonym"`
+			Weight  string `json:"weight"`
+			Tag     string `json:"tag"`
+			Word    string `json:"word"`
+		}
+	}{}
+	err := json.Unmarshal([]byte(res), &m)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%+v\n", m.Data[1].Word)
+	//fmt.Printf("%+v\n", m["data"].([]interface{})[1].(map[string]interface{})["word"])    使用map接收值
+}
+
 func main() {
 	//Marshal()
-	unMarshal()
+	//unMarshal()
+	parseNLP()
 }
